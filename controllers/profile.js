@@ -1,7 +1,10 @@
 const handleProfileGet = (req, res, db) => {
+	// declare request variables
 	const { id } = req.params;
+	// get user info from database, searching by id
 	db.select('*').from('users').where({id})
 		.then(user => {
+			// if user exists, return json'd data
 			if (user.length) {
 				res.json(user[0])
 			} else {
